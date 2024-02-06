@@ -10,11 +10,12 @@ interface MemberProps {
   first_name: string;
   last_name: string;
   email: string;
+  created_at: string;
+  updated_at: string;
 }
 
 const TeamMembersPage = async () => {
   const { data } = await getAllMembersAction()
-  console.log("lista de membros", data.length)
 
   return (
     <main className="flex min-h-screen min-w-full flex-row items-center bg-white relative">
@@ -54,8 +55,16 @@ const TeamMembersPage = async () => {
                 <tr key={user.id} className="border-b-[0.0625rem] relative">
                   <td className="flex relative items-center m-4 -bottom-2"><div className="rounded-full bg-[#F5F4F7] w-12 h-12 mr-4" />{`${user.first_name} ${user.last_name[0]}.`}</td>
                   <td className="m-4">{user.email}</td>
-                  <td className="m-4">June 1, 2019</td>
-                  <td className="m-4">June 1, 2019</td>
+                  <td className="m-4">{new Intl.DateTimeFormat('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                  }).format(new Date(user.created_at))}</td>
+                  <td className="m-4">{new Intl.DateTimeFormat('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                  }).format(new Date(user.updated_at))}</td>
                   <td className="m-4 justify-end flex">
                     <UserOptions user={user.id}/>
                   </td>

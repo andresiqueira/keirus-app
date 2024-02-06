@@ -9,7 +9,6 @@ import { menuList } from "@/utils/mocks/menuList";
 
 const EditMemberPage = async ({ params }: { params: { editMember: string }}) => {
   const { data } = await getOneMemberAction(Number(params.editMember))
-
   const updateMemberWithId = editMemberAction.bind(null, Number(params.editMember))
 
   return (
