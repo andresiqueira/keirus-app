@@ -5,6 +5,7 @@ import { revalidateTag } from "next/cache"
 const getOneMemberAction = async (id: number) => {
   try {
     const res = await fetch(`http://localhost:3007/team-members/${id}`, {
+      cache: "no-cache",
       method: "GET",
       headers: {
         "Content-Type": "application/json",

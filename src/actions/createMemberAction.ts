@@ -31,6 +31,7 @@ const createMemberAction = async (_prevState: unknown, formData: FormData) => {
   
     const res = await fetch("http://localhost:3007/team-members/", {
       method: "POST",
+      cache: "no-cache",
       headers: {
         "Content-Type": "application/json",
       },
